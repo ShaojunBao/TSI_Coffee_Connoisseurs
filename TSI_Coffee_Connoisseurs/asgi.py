@@ -1,5 +1,5 @@
 """
-ASGI config for coffeecollector project.
+ASGI config for TSI_Coffee_Connoisseurs project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'coffeecollector.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TSI_Coffee_Connoisseurs.settings')
 
 application = get_asgi_application()

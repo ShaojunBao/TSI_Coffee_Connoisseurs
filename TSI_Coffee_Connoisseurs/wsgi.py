@@ -1,5 +1,5 @@
 """
-WSGI config for coffeecollector project.
+WSGI config for TSI_Coffee_Connoisseurs project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'coffeecollector.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TSI_Coffee_Connoisseurs.settings')
 
 application = get_wsgi_application()
