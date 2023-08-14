@@ -1,10 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cat Collector</title>
+  <title>TSI Coffee Connoisseurs</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
@@ -17,7 +20,8 @@
         </ul>
         <ul class="right">
             <!-- changes below -->
-            
+
+
             {% if user.is_authenticated %}
               <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
@@ -33,7 +37,7 @@
     {% endblock %}
   </main>
   <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2021 Cat Collector &nbsp;</div>
+    <div class="right">All Rights Reserved, &copy; 2023 TSI Coffee Connoisseurs &nbsp;</div>
   </footer>
 </body>
 </html>
