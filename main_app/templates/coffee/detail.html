@@ -11,5 +11,10 @@
       <P>Review: {{coffee.review}}</P>
       <p>Price: {{coffee.price}}</p>
     </div>
+
+    <div class="card-action">
+        <a href="{% url 'coffee_update' coffee.id %}">Edit</a>
+        <a href="{% url 'coffee_delete' coffee.id %}">Delete</a>
+      </div>
   </div>
 {% endblock %}

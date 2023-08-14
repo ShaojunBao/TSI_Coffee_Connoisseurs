@@ -4,6 +4,7 @@ from .models import Coffee
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
@@ -48,7 +49,6 @@ class CoffeeCreate(CreateView):
   fields = ['brand', 'roast', 'flavor_profile', 'rating',
             'review', 'price' 
             ]
-  
   def form_valid(self, form):
     # Check if the user is a superuser
     if not self.request.user.is_superuser:
@@ -57,9 +57,18 @@ class CoffeeCreate(CreateView):
         return HttpResponseForbidden("You don't have permission to perform this action.")
     
     # Assign the logged in user (self.request.user)
-    form.instance.user = self.request.user  # form.instance is the cat
+    form.instance.user = self.request.user  # form.instance is the Coffee
     # Let the CreateView do its job as usual
     return super().form_valid(form)
+  
+class CoffeeUpdate(UpdateView):
+  model = Coffee
+  # Let's disallow the renaming of a Coffee by excluding the name field!
+  fields = ['brand', 'flavor_profile', 'rating', 'review', 'price']
+
+class CoffeeDelete(DeleteView):
+  model = Coffee
+  success_url = '/coffee'
 
 
   
