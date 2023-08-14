@@ -6,4 +6,5 @@ urlpatterns = [
     path('coffee/', views.coffee_index, name='index'),
     path('coffee/<int:coffee_id>/', views.coffee_detail, name='detail'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('coffee/create/', views.CoffeeCreate.as_view(), name='coffee_create'),
 ]
