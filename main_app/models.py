@@ -1,5 +1,13 @@
+import datetime
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
+
+RATING_CHOICES = [(1,'1'),
+                  (2,'2'),
+                  (3,'3'),
+                  (4,'4'),
+                  (5,'5')]
 
 RATING_CHOICES = [(1,'1'),
                   (2,'2'),
@@ -40,6 +48,21 @@ class User_review(models.Model):
     )
     user_review = models.TextField(max_length=250)
     # timestamp = models.DateTimeField(auto_now_add=True, null=True)
+
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField ('date published') 
+    def __str__(self):
+        return self.question_text
+
+                                     
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     
     user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
 
