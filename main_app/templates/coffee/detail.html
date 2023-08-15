@@ -16,5 +16,20 @@
         <a href="{% url 'coffee_update' coffee.id %}">Edit</a>
         <a href="{% url 'coffee_delete' coffee.id %}">Delete</a>
       </div>
+      <div class="col s6">
+        <table class="striped">
+          <thead>
+            <tr><th>Rating</th><th>Review</th></tr>
+          </thead>
+          <tbody>
+            {% for review in user.feeding_set.all %}
+              <tr>
+                <td>{{review.user_rating}}</td>
+                <td>{{review.user_review}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
   </div>
 {% endblock %}
