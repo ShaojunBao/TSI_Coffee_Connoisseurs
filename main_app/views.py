@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from django.views.generic.edit import CreateView
-from .models import Coffee
+from .models import Coffee, User_review
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import CommentForm
+from .forms import User_reviewForm
 
 # Create your views here.
 
@@ -18,13 +18,25 @@ def coffee_index(request):
   return render(request, 'coffee/index.html', {
     'coffees': coffees
   })
-  
+
+# class CoffeeDetail(DetailView):
+    
 def coffee_detail(request, coffee_id):
   coffee = Coffee.objects.get(id=coffee_id)
-  comment_forms = CommentForm
+  review_form = User_reviewForm()
   return render(request, 'coffee/detail.html',{
-    'coffee' : coffee, 'comment_forms': comment_forms
+    'coffee' : coffee, 'review_form' : review_form
   })
+
+def add_review(request, coffee_id):
+    coffee_instance = Coffee.objects.get(id=coffee_id)
+    form = User_reviewForm(request.POST)
+
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.coffee = coffee_instance
+        new_review.save()
+    return redirect('detail', coffee_id=coffee_id)
   
 
 def signup(request):
@@ -67,10 +79,39 @@ class CoffeeUpdate(UpdateView):
   model = Coffee
   # Let's disallow the renaming of a Coffee by excluding the name field!
   fields = ['brand', 'flavor_profile', 'rating', 'review', 'price']
+  def form_valid(self, form):
+    # Check if the user is a superuser
+    if not self.request.user.is_superuser:
+        # If the user isn't a superuser, return a forbidden response or handle as you see fit
+        from django.http import HttpResponseForbidden
+        return HttpResponseForbidden("You don't have permission to perform this action.")
+    
+    # Assign the logged in user (self.request.user)
+    form.instance.user = self.request.user  # form.instance is the Coffee
+    # Let the CreateView do its job as usual
+    return super().form_valid(form)
 
 class CoffeeDelete(DeleteView):
   model = Coffee
   success_url = '/coffee'
+  def form_valid(self, form):
+    # Check if the user is a superuser
+    if not self.request.user.is_superuser:
+        # If the user isn't a superuser, return a forbidden response or handle as you see fit
+        from django.http import HttpResponseForbidden
+        return HttpResponseForbidden("You don't have permission to perform this action.")
+    
+    # Assign the logged in user (self.request.user)
+    form.instance.user = self.request.user  # form.instance is the Coffee
+    # Let the CreateView do its job as usual
+    return super().form_valid(form)  
+  
+# class ReviewUpdate(UpdateView):
+#   model = User_review
+#   fields = ['user_rating', 'user_review'] 
+  
+  
+  
 
 
   
