@@ -35,6 +35,7 @@ def add_review(request, coffee_id):
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.coffee = coffee_instance
+        new_review.user = request.user
         new_review.save()
     return redirect('detail', coffee_id=coffee_id)
   

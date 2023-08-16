@@ -28,11 +28,12 @@
     </form>
     <table class="striped">
       <thead>
-        <tr><th>Rating</th><th>My Experience</th></tr>
+        <tr><th>User Name</th><th>Rating</th><th>My Experience</th></tr>
       </thead>
       <tbody>
         {% for review in coffee.user_review_set.all %}
           <tr>
+            <td>{{ review.user.username }}</td>
             <td>{{review.user_rating}}</td>
             <td>{{review.user_review}}</td>
           </tr>

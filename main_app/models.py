@@ -48,6 +48,7 @@ class User_review(models.Model):
     user_review = models.TextField(max_length=250)
     
     coffee = models.ForeignKey(Coffee, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.user_review
