@@ -10,6 +10,6 @@ urlpatterns = [
     path('coffee/<int:pk>/update/', views.CoffeeUpdate.as_view(), name='coffee_update'),
     path('coffee/<int:pk>/delete/', views.CoffeeDelete.as_view(), name='coffee_delete'),
     path('coffee/<int:coffee_id>/add_review/', views.add_review, name='add_review'),
-    # path('reviews/<int:pk>/update/', views.ReviewUpdate.as_view(), name='reviews_update'),
-    # path('reviews/<int:pk>/delete/', views.ReviewDelete.as_view(), name='reviews_delete'),
+    path('reviews/<int:pk>/update/', views.ReviewUpdate.as_view(), name='reviews_update'),
+    path('reviews/<int:pk>/delete/', views.ReviewDelete.as_view(), name='reviews_delete'),
 ]

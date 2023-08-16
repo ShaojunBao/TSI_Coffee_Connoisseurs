@@ -36,9 +36,13 @@
             <td>{{ review.user.username }}</td>
             <td>{{review.user_rating}}</td>
             <td>{{review.user_review}}</td>
-          </tr>
+          </tr>     
         {% endfor %}
       </tbody>
     </table>
+    <div class="card-action">
+      <a href="{% url 'reviews_update' coffee.id %}">Edit</a>
+      <a href="{% url 'reviews_delete' coffee.id %}">Delete</a>
+    </div>
   </div>
 {% endblock %}

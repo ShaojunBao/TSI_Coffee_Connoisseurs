@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect,HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Coffee, User_review
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import User_reviewForm
 
 # Create your views here.
@@ -107,9 +106,13 @@ class CoffeeDelete(DeleteView):
     # Let the CreateView do its job as usual
     return super().form_valid(form)  
   
-# class ReviewUpdate(UpdateView):
-#   model = User_review
-#   fields = ['user_rating', 'user_review'] 
+class ReviewUpdate(UpdateView):
+  model = User_review
+  fields = ['user_rating', 'user_review']  
+
+class ReviewDelete(DeleteView):
+   model = User_review
+   success_url = '/coffee'
   
   
   
