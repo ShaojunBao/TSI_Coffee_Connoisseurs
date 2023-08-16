@@ -3,22 +3,24 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-RATING_CHOICES = [(1,'1'),
-                  (2,'2'),
-                  (3,'3'),
-                  (4,'4'),
-                  (5,'5')]
 
-RATING_CHOICES = [(1,'1'),
-                  (2,'2'),
-                  (3,'3'),
-                  (4,'4'),
-                  (5,'5')]
 
 #Import User
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
+
+RATING_CHOICES = [(1,'1'),
+                  (2,'2'),
+                  (3,'3'),
+                  (4,'4'),
+                  (5,'5')]
+
+RATING_CHOICES = [(1,'1'),
+                  (2,'2'),
+                  (3,'3'),
+                  (4,'4'),
+                  (5,'5')]
 
 
 
