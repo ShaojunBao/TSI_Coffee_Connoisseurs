@@ -17,4 +17,27 @@
         <a href="{% url 'coffee_delete' coffee.id %}">Delete</a>
       </div>
   </div>
+
+  <h1>Share Your Experience</h1>
+  <div class="col s6">
+    <form method="POST">
+      {% csrf_token %}
+      <!-- Render the inputs -->
+      {{ review_form.as_p }}
+      <input type="submit" class="btn" value="Add Review">
+    </form>
+    <table class="striped">
+      <thead>
+        <tr><th>Rating</th><th>My Experience</th></tr>
+      </thead>
+      <tbody>
+        {% for review in coffee.user_review_set.all %}
+          <tr>
+            <td>{{review.user_rating}}</td>
+            <td>{{review.user_review}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
