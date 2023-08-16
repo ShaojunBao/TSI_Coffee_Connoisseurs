@@ -84,13 +84,9 @@ WSGI_APPLICATION = 'TSI_Coffee_Connoisseurs.wsgi.application'
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'TSI_Coffee_Connoisseurs',
-    'USER': os.environ['DB_USER'],
-    'PASSWORD': os.environ['DB_PW'],
-    'HOST': os.environ['DB_HOST'],
-    'PORT': '5432',
-  }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'coffeecollector'
+    }
 }
 
 
