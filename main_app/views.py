@@ -29,14 +29,14 @@ def coffee_detail(request, coffee_id):
   })
 
 def add_review(request, coffee_id):
+    coffee_instance = Coffee.objects.get(id=coffee_id)
+    form = User_reviewForm(request.POST)
 
-  form = User_reviewForm(request.POST)
-
-  if form.is_valid():
-    new_review = form.save(commit=False)
-    new_review.coffee_id = coffee_id
-    new_review.save()
-  return redirect('detail', coffee_id=coffee_id)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.coffee = coffee_instance
+        new_review.save()
+    return redirect('detail', coffee_id=coffee_id)
   
 
 def signup(request):

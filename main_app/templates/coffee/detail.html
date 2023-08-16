@@ -20,7 +20,7 @@
 
   <h1>Share Your Experience</h1>
   <div class="col s6">
-    <form method="POST">
+    <form action="{% url 'add_review' coffee.id %}" method="POST">
       {% csrf_token %}
       <!-- Render the inputs -->
       {{ review_form.as_p }}
