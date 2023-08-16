@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import CommentForm
 
 # Create your views here.
 
@@ -21,9 +20,8 @@ def coffee_index(request):
   
 def coffee_detail(request, coffee_id):
   coffee = Coffee.objects.get(id=coffee_id)
-  comment_forms = CommentForm
   return render(request, 'coffee/detail.html',{
-    'coffee' : coffee, 'comment_forms': comment_forms
+    'coffee' : coffee
   })
   
 
