@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import User_reviewForm
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 
@@ -32,6 +33,9 @@ def coffee_detail(request, coffee_id):
   })
 
 def add_photo(request, coffee_id):
+    if not request.user.is_superuser:
+      return HttpResponseForbidden("You don't have permission to do this.")
+
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -50,6 +54,7 @@ def add_photo(request, coffee_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('detail', coffee_id=coffee_id)
+  
 
 def add_review(request, coffee_id):
     coffee_instance = Coffee.objects.get(id=coffee_id)
