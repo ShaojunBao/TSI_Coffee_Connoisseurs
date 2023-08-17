@@ -52,6 +52,8 @@ class User_review(models.Model):
     
     def __str__(self):
         return self.user_review
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'coffee_id': self.coffee.id})    
 
 
     
@@ -74,5 +76,12 @@ class Choice(models.Model):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
     user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
+    
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    coffee = models.ForeignKey(Coffee, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"Photo for coffee_id: {self.coffee_id} @{self.url}"
 
     
