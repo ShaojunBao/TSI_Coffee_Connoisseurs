@@ -1,4 +1,4 @@
-body {
+  body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -11,4 +11,26 @@ body {
   footer.page-footer {
     padding-top: 0;
     text-align: right;
+  }
+
+  .featured-coffee {
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .featured-coffee img {
+    width: 100%;
+    height: auto;
+  }
+
+  .featured-coffee .card-title {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+
+  .featured-coffee .card-text {
+    font-size: 0.9em;
+    color: #555;
   }

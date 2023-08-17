@@ -32,12 +32,14 @@ class Coffee(models.Model):
     review = models.TextField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_featured = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.brand} ({self.id})'
       
     def get_absolute_url(self):
         return reverse('detail', kwargs={'coffee_id': self.id})
+    
     
 
 class User_review(models.Model):

@@ -13,7 +13,8 @@ from .forms import User_reviewForm
 
 
 def home(request):
-  return render(request, 'home.html')
+    featured_coffees = Coffee.objects.filter(is_featured=True)
+    return render(request, 'home.html', {'featured_coffees': featured_coffees})
 
 def coffee_index(request):
   coffees = Coffee.objects.all()
@@ -61,7 +62,6 @@ def add_review(request, coffee_id):
         new_review.save()
     return redirect('detail', coffee_id=coffee_id)
   
-
 def signup(request):
   error_message = ''
   if request.method == 'POST':
