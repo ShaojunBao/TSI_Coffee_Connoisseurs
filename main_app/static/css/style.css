@@ -65,17 +65,17 @@ h1, h2 {
 a {
   color: #007bff;
   transition: color 0.2s ease;
-  text-decoration: none;  /* Remove the underline from all anchor tags */
+  text-decoration: none; 
 }
 
 a:hover, a:focus {
   color: #0056b3;
-  text-decoration: underline;  /* Add underline on hover for better UX */
+  text-decoration: underline;  
 }
 
 .navbar {
   background-image: url(../css/media/header-bg.png);
-  background-repeat: no-repeat; /* Add this to avoid repeating the navbar bg */
+  background-repeat: no-repeat; 
   background-size: cover;
 }
 
@@ -95,7 +95,7 @@ a:hover, a:focus {
   font-size: 18px;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: rgba(255, 255, 255, 0.1); /* Give a subtle bg */
+  background-color: rgba(255, 255, 255, 0.1); 
   padding: 5px 10px;
   border-radius: 5px;
   margin: 0 5px;
@@ -112,7 +112,7 @@ a:hover, a:focus {
   font-size: 16px;
   margin: 4px 2px;
   border-radius: 4px;
-  transition: all 0.3s ease; /* Smoothens the hover effect */
+  transition: all 0.3s ease; 
 }
 
 input[type="text"] {
@@ -123,6 +123,6 @@ input[type="text"] {
 }
 
 .mr-3, .mb-3, .mb-4, .mt-4 {
-  transition: all 0.2s ease; /* Adds subtle animation to elements with these classes */
+  transition: all 0.2s ease; 
 }
 
