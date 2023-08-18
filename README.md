@@ -20,3 +20,7 @@ This project was inspired by a passion for coffee and a desire to learn web deve
 <img src="/main_app/static/css/media/Screenshot 2023-08-18 142107.png">
 <img src="/main_app/static/css/media/Screenshot 2023-08-18 142152.png">
 <img src="/main_app/static/css/media/Screenshot 2023-08-18 142209.png">
+
+# Next Steps
+Future enhancement one - users will be able to coffee to their shopping cart.
+Future enhancement two -users will be able to sign up with email accounts.
