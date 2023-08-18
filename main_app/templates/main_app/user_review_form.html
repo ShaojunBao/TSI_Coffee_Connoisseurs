@@ -15,11 +15,17 @@
     {% for field in form %}
       <div class="mb-3">
         <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-        <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" value="{{ field.value|stringformat:'s' }}" class="form-control" {% if field.field.required %}required{% endif %}>
-        {% if field.errors %}
-          {% for error in field.errors %}
-            <div class="alert alert-danger mt-2">{{ error }}</div>
-          {% endfor %}
+        
+        {% if field.field.widget.input_type == 'select' %}
+          {{ field.errors }}
+          {{ field }}
+        {% else %}
+          {{ field }}
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <div class="alert alert-danger mt-2">{{ error }}</div>
+            {% endfor %}
+          {% endif %}
         {% endif %}
       </div>
     {% endfor %}
