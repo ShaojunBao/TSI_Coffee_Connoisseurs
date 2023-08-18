@@ -18,5 +18,5 @@ This project was inspired by a passion for coffee and a desire to learn web deve
 # Screenshot
 
 <img src="/main_app/static/css/media/Screenshot 2023-08-18 142107.png">
-<img src="../TSI_Coffee_Connoisseurs/main_app/static/css/media/Screenshot 2023-08-18 142152.png">
-<img src="../TSI_Coffee_Connoisseurs/main_app/static/css/media/Screenshot 2023-08-18 142209.png">
+<img src="/main_app/static/css/media/Screenshot 2023-08-18 142152.png">
+<img src="/main_app/static/css/media/Screenshot 2023-08-18 142209.png">
