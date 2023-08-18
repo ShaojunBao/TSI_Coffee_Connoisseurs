@@ -9,6 +9,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import User_reviewForm
 from django.http import HttpResponseForbidden
+from django.db.models import Q
+
 
 # Create your views here.
 
@@ -85,6 +87,15 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+def search_coffee(request):
+    query = request.GET.get('q', '')  
+
+    if query:
+        coffees = Coffee.objects.filter(Q(brand__icontains=query) | Q(roast__icontains=query))
+    else:
+        coffees = Coffee.objects.all()
+
+    return render(request, 'coffee/index.html', {'coffees': coffees})
 
 class CoffeeCreate(CreateView):
   model = Coffee
@@ -102,6 +113,8 @@ class CoffeeCreate(CreateView):
     form.instance.user = self.request.user  # form.instance is the Coffee
     # Let the CreateView do its job as usual
     return super().form_valid(form)
+
+
   
 class CoffeeUpdate(UpdateView):
   model = Coffee

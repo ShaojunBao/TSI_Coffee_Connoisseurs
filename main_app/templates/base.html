@@ -35,6 +35,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                     </li>
+                    <li class="nav-item">
+                      <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'coffee_search' %}">
+                          <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search for Coffee..." value="{{ request.GET.q }}" aria-label="Search">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                  </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
