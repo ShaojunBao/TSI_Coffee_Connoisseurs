@@ -2,19 +2,30 @@
 
 {% block content %}
 
+<div class="container mt-4">
   {% if object %}
-  <h1>Edit</h1>
+    <h1>Edit Review</h1>
   {% else %}
-  <h1>Add Coffee</h1>
+    <h1>Add Review</h1>
   {% endif %}
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <form action="" method="POST">
-    <!-- Django requires the following for security purposes -->
+
+  <form action="" method="POST" class="mt-4">
     {% csrf_token %}
-    <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
+
+    {% for field in form %}
+      <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" value="{{ field.value|stringformat:'s' }}" class="form-control" {% if field.field.required %}required{% endif %}>
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <div class="alert alert-danger mt-2">{{ error }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
+
 {% endblock %}
