@@ -119,7 +119,7 @@ class CoffeeCreate(CreateView):
 class CoffeeUpdate(UpdateView):
   model = Coffee
   # Let's disallow the renaming of a Coffee by excluding the name field!
-  fields = ['brand', 'flavor_profile', 'rating', 'review', 'price']
+  fields = ['brand', 'roast', 'flavor_profile', 'rating', 'review', 'price']
   def form_valid(self, form):
     # Check if the user is a superuser
     if not self.request.user.is_superuser:
